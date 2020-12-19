@@ -20,31 +20,31 @@ class TicketManagerTest {
 
     @BeforeEach
     public void setUp() {
-     manager.add(first);
-     manager.add(second);
-     manager.add(third);
-     manager.add(forth);
-     manager.add(fifth);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(forth);
+        manager.add(fifth);
     }
 
     @Test
     public void shouldTicketsFitSearchMoreOne() {
-        Ticket[] expected = new Ticket[]{first,third,fifth};
-        Ticket[] actual = manager.searchBy("LED", "MOV");
+        Ticket[] expected = new Ticket[]{first, third, fifth};
+        Ticket[] actual = manager.findAll("LED", "MOV");
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldTicketsFitSearchNo() {
         Ticket[] expected = new Ticket[]{};
-        Ticket[] actual = manager.searchBy("LED", "DME");
+        Ticket[] actual = manager.findAll("LED", "DME");
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldTicketFitSearchOne() {
         Ticket[] expected = new Ticket[]{forth};
-        Ticket[] actual = manager.searchBy("MOV", "EGO");
+        Ticket[] actual = manager.findAll("MOV", "EGO");
         assertArrayEquals(expected, actual);
     }
 

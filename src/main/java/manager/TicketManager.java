@@ -33,10 +33,10 @@ public class TicketManager {
         repository.removeById(id);
     }
 
-    public Ticket[] searchBy(String from, String to) {
+    public Ticket[] findAll(String from, String to) {
         Ticket[] result = new Ticket[0];
-        for (Ticket ticket: repository.findAll()) {
-            if (ticket.matches(from,to)) {
+        for (Ticket ticket : repository.findAll()) {
+            if (ticket.matches(from, to)) {
                 int length = result.length + 1;
                 Ticket[] tmp = new Ticket[length];
                 // копируем поэлементно все элементы из Ticket[]
