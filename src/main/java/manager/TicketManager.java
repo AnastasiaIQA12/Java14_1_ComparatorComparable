@@ -36,8 +36,8 @@ public class TicketManager {
 
     public Ticket[] findAll(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = new Ticket[0];
-        for (Ticket ticket: repository.findAll()) {
-            if (ticket.matches(from,to)) {
+        for (Ticket ticket : repository.findAll()) {
+            if (ticket.matches(from, to)) {
                 int length = result.length + 1;
                 Ticket[] tmp = new Ticket[length];
                 // копируем поэлементно все элементы из Ticket[]
@@ -49,7 +49,7 @@ public class TicketManager {
             }
         }
         Arrays.sort(result);
-        Arrays.sort(result,comparator);
+        Arrays.sort(result, comparator);
         return result;
     }
 

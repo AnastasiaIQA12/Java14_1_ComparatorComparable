@@ -6,9 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.TicketRepository;
 
-
-import java.util.Comparator;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TicketManagerTest {
@@ -22,16 +19,16 @@ class TicketManagerTest {
 
     @BeforeEach
     public void setUp() {
-     manager.add(first);
-     manager.add(second);
-     manager.add(third);
-     manager.add(forth);
-     manager.add(fifth);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(forth);
+        manager.add(fifth);
     }
 
     @Test
     public void shouldTicketsFitSearchMoreOne() {
-        Ticket[] expected = new Ticket[]{fifth,first,third};
+        Ticket[] expected = new Ticket[]{fifth, first, third};
         Ticket[] actual = manager.findAll("LED", "MOV", new TicketByPriceAscComparator());
         assertArrayEquals(expected, actual);
     }
