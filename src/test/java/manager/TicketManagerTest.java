@@ -1,11 +1,13 @@
 package manager;
 
 import domain.Ticket;
+import domain.TicketByPriceAscComparator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.TicketRepository;
 
-import java.util.Arrays;
+
+import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,22 +31,22 @@ class TicketManagerTest {
 
     @Test
     public void shouldTicketsFitSearchMoreOne() {
-        Ticket[] expected = new Ticket[]{first,third,fifth};
-        Ticket[] actual = manager.searchBy("LED", "MOV");
+        Ticket[] expected = new Ticket[]{fifth,first,third};
+        Ticket[] actual = manager.findAll("LED", "MOV", new TicketByPriceAscComparator());
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldTicketsFitSearchNo() {
         Ticket[] expected = new Ticket[]{};
-        Ticket[] actual = manager.searchBy("LED", "DME");
+        Ticket[] actual = manager.findAll("LED", "DME", new TicketByPriceAscComparator());
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldTicketFitSearchOne() {
         Ticket[] expected = new Ticket[]{forth};
-        Ticket[] actual = manager.searchBy("MOV", "EGO");
+        Ticket[] actual = manager.findAll("MOV", "EGO", new TicketByPriceAscComparator());
         assertArrayEquals(expected, actual);
     }
 

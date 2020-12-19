@@ -4,6 +4,7 @@ import domain.Ticket;
 import repository.TicketRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class TicketManager {
     private TicketRepository repository;
@@ -33,7 +34,7 @@ public class TicketManager {
         repository.removeById(id);
     }
 
-    public Ticket[] searchBy(String from, String to) {
+    public Ticket[] findAll(String from, String to, Comparator<Ticket> comparator) {
         Ticket[] result = new Ticket[0];
         for (Ticket ticket: repository.findAll()) {
             if (ticket.matches(from,to)) {
@@ -48,6 +49,8 @@ public class TicketManager {
             }
         }
         Arrays.sort(result);
+        Arrays.sort(result,comparator);
         return result;
     }
+
 }
